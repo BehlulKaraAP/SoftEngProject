@@ -1,26 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\behlu\\Desktop\\School\\SoftwareEngineering\\SoftEngProject\\SoftEngProject\\",
+  "WorkspaceRootPath": "C:\\Users\\behlu\\Desktop\\SoftEngProject\\SoftEngProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C8700627-C534-4D8F-8B0F-685E7C7C7B29}|SoftEngProject\\SoftEngProject.csproj|c:\\users\\behlu\\desktop\\school\\softwareengineering\\softengproject\\softengproject\\softengproject\\hero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C8700627-C534-4D8F-8B0F-685E7C7C7B29}|SoftEngProject\\SoftEngProject.csproj|c:\\users\\behlu\\desktop\\softengproject\\softengproject\\softengproject\\hero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C8700627-C534-4D8F-8B0F-685E7C7C7B29}|SoftEngProject\\SoftEngProject.csproj|solutionrelative:softengproject\\hero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C8700627-C534-4D8F-8B0F-685E7C7C7B29}|SoftEngProject\\SoftEngProject.csproj|c:\\users\\behlu\\desktop\\school\\softwareengineering\\softengproject\\softengproject\\softengproject\\animation\\playeranimationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C8700627-C534-4D8F-8B0F-685E7C7C7B29}|SoftEngProject\\SoftEngProject.csproj|solutionrelative:softengproject\\animation\\playeranimationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C8700627-C534-4D8F-8B0F-685E7C7C7B29}|SoftEngProject\\SoftEngProject.csproj|c:\\users\\behlu\\desktop\\school\\softwareengineering\\softengproject\\softengproject\\softengproject\\animation\\animatie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C8700627-C534-4D8F-8B0F-685E7C7C7B29}|SoftEngProject\\SoftEngProject.csproj|solutionrelative:softengproject\\animation\\animatie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C8700627-C534-4D8F-8B0F-685E7C7C7B29}|SoftEngProject\\SoftEngProject.csproj|c:\\users\\behlu\\desktop\\school\\softwareengineering\\softengproject\\softengproject\\softengproject\\game1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C8700627-C534-4D8F-8B0F-685E7C7C7B29}|SoftEngProject\\SoftEngProject.csproj|c:\\users\\behlu\\desktop\\softengproject\\softengproject\\softengproject\\game1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C8700627-C534-4D8F-8B0F-685E7C7C7B29}|SoftEngProject\\SoftEngProject.csproj|solutionrelative:softengproject\\game1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C8700627-C534-4D8F-8B0F-685E7C7C7B29}|SoftEngProject\\SoftEngProject.csproj|c:\\users\\behlu\\desktop\\school\\softwareengineering\\softengproject\\softengproject\\softengproject\\animation\\animationframe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C8700627-C534-4D8F-8B0F-685E7C7C7B29}|SoftEngProject\\SoftEngProject.csproj|solutionrelative:softengproject\\animation\\animationframe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,66 +26,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PlayerAnimationController.cs",
-              "DocumentMoniker": "C:\\Users\\behlu\\Desktop\\School\\SoftwareEngineering\\SoftEngProject\\SoftEngProject\\SoftEngProject\\Animation\\PlayerAnimationController.cs",
-              "RelativeDocumentMoniker": "SoftEngProject\\Animation\\PlayerAnimationController.cs",
-              "ToolTip": "C:\\Users\\behlu\\Desktop\\School\\SoftwareEngineering\\SoftEngProject\\SoftEngProject\\SoftEngProject\\Animation\\PlayerAnimationController.cs",
-              "RelativeToolTip": "SoftEngProject\\Animation\\PlayerAnimationController.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAQwC8AAABIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T23:06:56.733Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AnimationFrame.cs",
-              "DocumentMoniker": "C:\\Users\\behlu\\Desktop\\School\\SoftwareEngineering\\SoftEngProject\\SoftEngProject\\SoftEngProject\\Animation\\AnimationFrame.cs",
-              "RelativeDocumentMoniker": "SoftEngProject\\Animation\\AnimationFrame.cs",
-              "ToolTip": "C:\\Users\\behlu\\Desktop\\School\\SoftwareEngineering\\SoftEngProject\\SoftEngProject\\SoftEngProject\\Animation\\AnimationFrame.cs",
-              "RelativeToolTip": "SoftEngProject\\Animation\\AnimationFrame.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T17:27:56.748Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Animatie.cs",
-              "DocumentMoniker": "C:\\Users\\behlu\\Desktop\\School\\SoftwareEngineering\\SoftEngProject\\SoftEngProject\\SoftEngProject\\Animation\\Animatie.cs",
-              "RelativeDocumentMoniker": "SoftEngProject\\Animation\\Animatie.cs",
-              "ToolTip": "C:\\Users\\behlu\\Desktop\\School\\SoftwareEngineering\\SoftEngProject\\SoftEngProject\\SoftEngProject\\Animation\\Animatie.cs",
-              "RelativeToolTip": "SoftEngProject\\Animation\\Animatie.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAmwBEAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T17:27:53.408Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Hero.cs",
-              "DocumentMoniker": "C:\\Users\\behlu\\Desktop\\School\\SoftwareEngineering\\SoftEngProject\\SoftEngProject\\SoftEngProject\\Hero.cs",
+              "DocumentMoniker": "C:\\Users\\behlu\\Desktop\\SoftEngProject\\SoftEngProject\\SoftEngProject\\Hero.cs",
               "RelativeDocumentMoniker": "SoftEngProject\\Hero.cs",
-              "ToolTip": "C:\\Users\\behlu\\Desktop\\School\\SoftwareEngineering\\SoftEngProject\\SoftEngProject\\SoftEngProject\\Hero.cs",
+              "ToolTip": "C:\\Users\\behlu\\Desktop\\SoftEngProject\\SoftEngProject\\SoftEngProject\\Hero.cs",
               "RelativeToolTip": "SoftEngProject\\Hero.cs",
-              "ViewState": "AgIAAEYAAAAAAAAAAAA0wGAAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAAkwC0AAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T17:23:39.386Z",
+              "WhenOpened": "2025-11-26T16:15:18.543Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Game1.cs",
-              "DocumentMoniker": "C:\\Users\\behlu\\Desktop\\School\\SoftwareEngineering\\SoftEngProject\\SoftEngProject\\SoftEngProject\\Game1.cs",
+              "DocumentMoniker": "C:\\Users\\behlu\\Desktop\\SoftEngProject\\SoftEngProject\\SoftEngProject\\Game1.cs",
               "RelativeDocumentMoniker": "SoftEngProject\\Game1.cs",
-              "ToolTip": "C:\\Users\\behlu\\Desktop\\School\\SoftwareEngineering\\SoftEngProject\\SoftEngProject\\SoftEngProject\\Game1.cs",
+              "ToolTip": "C:\\Users\\behlu\\Desktop\\SoftEngProject\\SoftEngProject\\SoftEngProject\\Game1.cs",
               "RelativeToolTip": "SoftEngProject\\Game1.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAYwDMAAABFAAAAAAAAAA==",
+              "ViewState": "AgIAACwAAAAAAAAAAAAiwEoAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T09:19:16.202Z"
+              "WhenOpened": "2025-11-18T09:19:16.202Z",
+              "EditorCaption": ""
             }
           ]
         }

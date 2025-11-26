@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/behlu/Desktop/School/SoftwareEngineering/SoftEngProject/SoftEngProject/SoftEngProject/Content/Samurai_RUN.png</SourceFile>
+  <SourceFile>C:/Users/behlu/Desktop/SoftEngProject/SoftEngProject/SoftEngProject/Content/Samurai_RUN.png</SourceFile>
   <SourceTime>2025-11-20T18:18:33.8391656+01:00</SourceTime>
-  <DestFile>C:/Users/behlu/Desktop/School/SoftwareEngineering/SoftEngProject/SoftEngProject/SoftEngProject/Content/bin/Windows/Content/Samurai_RUN.xnb</DestFile>
-  <DestTime>2025-11-20T21:53:20.0299682+01:00</DestTime>
+  <DestFile>C:/Users/behlu/Desktop/SoftEngProject/SoftEngProject/SoftEngProject/Content/bin/Windows/Content/Samurai_RUN.xnb</DestFile>
+  <DestTime>2025-11-21T16:39:17.8145625+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2025-06-02T12:31:02+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

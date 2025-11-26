@@ -4165,11 +4165,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\behlu\\Desktop\\School\\SoftwareEngineering\\SoftEngProject\\SoftEngProject\\SoftEngProject\\SoftEngProject.csproj",
+      "projectUniqueName": "C:\\Users\\behlu\\Desktop\\SoftEngProject\\SoftEngProject\\SoftEngProject\\SoftEngProject.csproj",
       "projectName": "SoftEngProject",
-      "projectPath": "C:\\Users\\behlu\\Desktop\\School\\SoftwareEngineering\\SoftEngProject\\SoftEngProject\\SoftEngProject\\SoftEngProject.csproj",
+      "projectPath": "C:\\Users\\behlu\\Desktop\\SoftEngProject\\SoftEngProject\\SoftEngProject\\SoftEngProject.csproj",
       "packagesPath": "C:\\Users\\behlu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\behlu\\Desktop\\School\\SoftwareEngineering\\SoftEngProject\\SoftEngProject\\SoftEngProject\\obj\\",
+      "outputPath": "C:\\Users\\behlu\\Desktop\\SoftEngProject\\SoftEngProject\\SoftEngProject\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
