@@ -23,7 +23,16 @@ namespace SoftEngProject.States
         {
             var input = hero.InputReader.ReadInput();
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            //if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            //{
+            //    hero.TransitionTo(new AttackState(hero));
+            //}
+            //else if (input.X != 0)
+            //{
+            //    hero.TransitionTo(new RunState(hero));
+            //}
+
+            if (hero.InputReader.AttackPressed())
             {
                 hero.TransitionTo(new AttackState(hero));
             }

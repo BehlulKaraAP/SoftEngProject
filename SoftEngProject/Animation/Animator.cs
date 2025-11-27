@@ -61,7 +61,7 @@ namespace SoftEngProject.Animation
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 position, SpriteEffects spriteEffects, float scale = 2f)
+        public void Draw(SpriteBatch spriteBatch, Vector2 position, SpriteEffects spriteEffects, float scale = 1.5f)
         {
             if (currentAnimation == null) return;
 

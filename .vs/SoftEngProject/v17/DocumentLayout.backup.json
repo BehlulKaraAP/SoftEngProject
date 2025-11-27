@@ -7,32 +7,16 @@
       "RelativeMoniker": "D:0:0:{C8700627-C534-4D8F-8B0F-685E7C7C7B29}|SoftEngProject\\SoftEngProject.csproj|solutionrelative:softengproject\\game1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C8700627-C534-4D8F-8B0F-685E7C7C7B29}|SoftEngProject\\SoftEngProject.csproj|c:\\users\\behlu\\desktop\\softengproject\\softengproject\\softengproject\\states\\attackstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C8700627-C534-4D8F-8B0F-685E7C7C7B29}|SoftEngProject\\SoftEngProject.csproj|solutionrelative:softengproject\\states\\attackstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C8700627-C534-4D8F-8B0F-685E7C7C7B29}|SoftEngProject\\SoftEngProject.csproj|c:\\users\\behlu\\desktop\\softengproject\\softengproject\\softengproject\\states\\runstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C8700627-C534-4D8F-8B0F-685E7C7C7B29}|SoftEngProject\\SoftEngProject.csproj|solutionrelative:softengproject\\states\\runstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C8700627-C534-4D8F-8B0F-685E7C7C7B29}|SoftEngProject\\SoftEngProject.csproj|c:\\users\\behlu\\desktop\\softengproject\\softengproject\\softengproject\\hero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C8700627-C534-4D8F-8B0F-685E7C7C7B29}|SoftEngProject\\SoftEngProject.csproj|solutionrelative:softengproject\\hero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C8700627-C534-4D8F-8B0F-685E7C7C7B29}|SoftEngProject\\SoftEngProject.csproj|c:\\users\\behlu\\desktop\\softengproject\\softengproject\\softengproject\\states\\idlestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C8700627-C534-4D8F-8B0F-685E7C7C7B29}|SoftEngProject\\SoftEngProject.csproj|solutionrelative:softengproject\\states\\idlestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C8700627-C534-4D8F-8B0F-685E7C7C7B29}|SoftEngProject\\SoftEngProject.csproj|c:\\users\\behlu\\desktop\\softengproject\\softengproject\\softengproject\\herofactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8700627-C534-4D8F-8B0F-685E7C7C7B29}|SoftEngProject\\SoftEngProject.csproj|solutionrelative:softengproject\\herofactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C8700627-C534-4D8F-8B0F-685E7C7C7B29}|SoftEngProject\\SoftEngProject.csproj|c:\\users\\behlu\\desktop\\softengproject\\softengproject\\softengproject\\animation\\animator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C8700627-C534-4D8F-8B0F-685E7C7C7B29}|SoftEngProject\\SoftEngProject.csproj|solutionrelative:softengproject\\animation\\animator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C8700627-C534-4D8F-8B0F-685E7C7C7B29}|SoftEngProject\\SoftEngProject.csproj|c:\\users\\behlu\\desktop\\softengproject\\softengproject\\softengproject\\animation\\spriteanimation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C8700627-C534-4D8F-8B0F-685E7C7C7B29}|SoftEngProject\\SoftEngProject.csproj|solutionrelative:softengproject\\animation\\spriteanimation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C8700627-C534-4D8F-8B0F-685E7C7C7B29}|SoftEngProject\\SoftEngProject.csproj|c:\\users\\behlu\\desktop\\softengproject\\softengproject\\softengproject\\states\\playerstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C8700627-C534-4D8F-8B0F-685E7C7C7B29}|SoftEngProject\\SoftEngProject.csproj|solutionrelative:softengproject\\states\\playerstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C8700627-C534-4D8F-8B0F-685E7C7C7B29}|SoftEngProject\\SoftEngProject.csproj|c:\\users\\behlu\\desktop\\softengproject\\softengproject\\softengproject\\interfaces\\iherofactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8700627-C534-4D8F-8B0F-685E7C7C7B29}|SoftEngProject\\SoftEngProject.csproj|solutionrelative:softengproject\\interfaces\\iherofactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,93 +34,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AttackState.cs",
-              "DocumentMoniker": "C:\\Users\\behlu\\Desktop\\SoftEngProject\\SoftEngProject\\SoftEngProject\\States\\AttackState.cs",
-              "RelativeDocumentMoniker": "SoftEngProject\\States\\AttackState.cs",
-              "ToolTip": "C:\\Users\\behlu\\Desktop\\SoftEngProject\\SoftEngProject\\SoftEngProject\\States\\AttackState.cs",
-              "RelativeToolTip": "SoftEngProject\\States\\AttackState.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAQwBYAAAA3AAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "IHeroFactory.cs",
+              "DocumentMoniker": "C:\\Users\\behlu\\Desktop\\SoftEngProject\\SoftEngProject\\SoftEngProject\\Interfaces\\IHeroFactory.cs",
+              "RelativeDocumentMoniker": "SoftEngProject\\Interfaces\\IHeroFactory.cs",
+              "ToolTip": "C:\\Users\\behlu\\Desktop\\SoftEngProject\\SoftEngProject\\SoftEngProject\\Interfaces\\IHeroFactory.cs",
+              "RelativeToolTip": "SoftEngProject\\Interfaces\\IHeroFactory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T14:53:33.48Z",
+              "WhenOpened": "2025-11-27T15:04:47.238Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "RunState.cs",
-              "DocumentMoniker": "C:\\Users\\behlu\\Desktop\\SoftEngProject\\SoftEngProject\\SoftEngProject\\States\\RunState.cs",
-              "RelativeDocumentMoniker": "SoftEngProject\\States\\RunState.cs",
-              "ToolTip": "C:\\Users\\behlu\\Desktop\\SoftEngProject\\SoftEngProject\\SoftEngProject\\States\\RunState.cs",
-              "RelativeToolTip": "SoftEngProject\\States\\RunState.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAgwB8AAAAXAAAAAAAAAA==",
+              "Title": "HeroFactory.cs",
+              "DocumentMoniker": "C:\\Users\\behlu\\Desktop\\SoftEngProject\\SoftEngProject\\SoftEngProject\\HeroFactory.cs",
+              "RelativeDocumentMoniker": "SoftEngProject\\HeroFactory.cs",
+              "ToolTip": "C:\\Users\\behlu\\Desktop\\SoftEngProject\\SoftEngProject\\SoftEngProject\\HeroFactory.cs",
+              "RelativeToolTip": "SoftEngProject\\HeroFactory.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAzwBwAAABUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T14:50:39.489Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "IdleState.cs",
-              "DocumentMoniker": "C:\\Users\\behlu\\Desktop\\SoftEngProject\\SoftEngProject\\SoftEngProject\\States\\IdleState.cs",
-              "RelativeDocumentMoniker": "SoftEngProject\\States\\IdleState.cs",
-              "ToolTip": "C:\\Users\\behlu\\Desktop\\SoftEngProject\\SoftEngProject\\SoftEngProject\\States\\IdleState.cs",
-              "RelativeToolTip": "SoftEngProject\\States\\IdleState.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAowBIAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T14:28:38.383Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "PlayerState.cs",
-              "DocumentMoniker": "C:\\Users\\behlu\\Desktop\\SoftEngProject\\SoftEngProject\\SoftEngProject\\States\\PlayerState.cs",
-              "RelativeDocumentMoniker": "SoftEngProject\\States\\PlayerState.cs",
-              "ToolTip": "C:\\Users\\behlu\\Desktop\\SoftEngProject\\SoftEngProject\\SoftEngProject\\States\\PlayerState.cs",
-              "RelativeToolTip": "SoftEngProject\\States\\PlayerState.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T14:26:17.241Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Animator.cs",
-              "DocumentMoniker": "C:\\Users\\behlu\\Desktop\\SoftEngProject\\SoftEngProject\\SoftEngProject\\Animation\\Animator.cs",
-              "RelativeDocumentMoniker": "SoftEngProject\\Animation\\Animator.cs",
-              "ToolTip": "C:\\Users\\behlu\\Desktop\\SoftEngProject\\SoftEngProject\\SoftEngProject\\Animation\\Animator.cs",
-              "RelativeToolTip": "SoftEngProject\\Animation\\Animator.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAwwEcAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T13:30:59.959Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "SpriteAnimation.cs",
-              "DocumentMoniker": "C:\\Users\\behlu\\Desktop\\SoftEngProject\\SoftEngProject\\SoftEngProject\\Animation\\SpriteAnimation.cs",
-              "RelativeDocumentMoniker": "SoftEngProject\\Animation\\SpriteAnimation.cs",
-              "ToolTip": "C:\\Users\\behlu\\Desktop\\SoftEngProject\\SoftEngProject\\SoftEngProject\\Animation\\SpriteAnimation.cs",
-              "RelativeToolTip": "SoftEngProject\\Animation\\SpriteAnimation.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAoAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T13:30:46.515Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Hero.cs",
-              "DocumentMoniker": "C:\\Users\\behlu\\Desktop\\SoftEngProject\\SoftEngProject\\SoftEngProject\\Hero.cs",
-              "RelativeDocumentMoniker": "SoftEngProject\\Hero.cs",
-              "ToolTip": "C:\\Users\\behlu\\Desktop\\SoftEngProject\\SoftEngProject\\SoftEngProject\\Hero.cs",
-              "RelativeToolTip": "SoftEngProject\\Hero.cs",
-              "ViewState": "AgIAAGEAAAAAAAAAAAAIwCEAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T17:23:39.386Z",
+              "WhenOpened": "2025-11-27T14:57:02.67Z",
               "EditorCaption": ""
             },
             {
@@ -145,11 +64,24 @@
               "Title": "Game1.cs",
               "DocumentMoniker": "C:\\Users\\behlu\\Desktop\\SoftEngProject\\SoftEngProject\\SoftEngProject\\Game1.cs",
               "RelativeDocumentMoniker": "SoftEngProject\\Game1.cs",
-              "ToolTip": "C:\\Users\\behlu\\Desktop\\SoftEngProject\\SoftEngProject\\SoftEngProject\\Game1.cs*",
-              "RelativeToolTip": "SoftEngProject\\Game1.cs*",
-              "ViewState": "AgIAADQAAAAAAAAAAAAswEoAAAAgAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\behlu\\Desktop\\SoftEngProject\\SoftEngProject\\SoftEngProject\\Game1.cs",
+              "RelativeToolTip": "SoftEngProject\\Game1.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwCwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T09:19:16.202Z",
+              "WhenOpened": "2025-11-27T14:43:30.784Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Hero.cs",
+              "DocumentMoniker": "C:\\Users\\behlu\\Desktop\\SoftEngProject\\SoftEngProject\\SoftEngProject\\Hero.cs",
+              "RelativeDocumentMoniker": "SoftEngProject\\Hero.cs",
+              "ToolTip": "C:\\Users\\behlu\\Desktop\\SoftEngProject\\SoftEngProject\\SoftEngProject\\Hero.cs",
+              "RelativeToolTip": "SoftEngProject\\Hero.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAqwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T22:47:28.385Z",
               "EditorCaption": ""
             }
           ]

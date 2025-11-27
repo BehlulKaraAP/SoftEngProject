@@ -19,15 +19,13 @@ namespace SoftEngProject.Input
                 direction = new Vector2(-1, 0);
             if (state.IsKeyDown(Keys.Right))
                 direction = new Vector2(1, 0);
-            if (state.IsKeyDown(Keys.Down))
-                direction = new Vector2(0, 1);
-            if (state.IsKeyDown(Keys.Up))
-                direction = new Vector2(0, -1);
+            
             return direction;
         }
 
-        
-
-        
+        public bool AttackPressed()
+        {
+            return Keyboard.GetState().IsKeyDown(Keys.Space);
+        }
     }
 }

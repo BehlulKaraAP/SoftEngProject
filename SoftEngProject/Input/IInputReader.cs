@@ -10,6 +10,7 @@ namespace SoftEngProject.Input
     internal interface IInputReader
     {
         Vector2 ReadInput();
+        bool AttackPressed();
         
     }
 }
