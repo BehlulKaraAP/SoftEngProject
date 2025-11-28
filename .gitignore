@@ -1,0 +1,26 @@
+# Build folders
+bin/
+obj/
+
+# Visual Studio
+*.user
+*.suo
+.vs/
+
+# MonoGame pipeline content
+*.xnb
+*.mgcontent
+
+# Temporary files
+*.tmp
+*.cache
+*.log
+
+# Debug / executable files
+*.pdb
+*.mdb
+*.exe
+*.dll
+
+# Thumbnails
+Thumbs.db
