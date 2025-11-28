@@ -5,10 +5,10 @@
   <Config />
   <SourceFiles>
     <File>C:/Users/behlu/Desktop/SoftEngProject/SoftEngProject/SoftEngProject/Content/Curved_tree1.png</File>
-    <File>C:/Users/behlu/Desktop/SoftEngProject/SoftEngProject/SoftEngProject/Content/New Piskel.png</File>
     <File>C:/Users/behlu/Desktop/SoftEngProject/SoftEngProject/SoftEngProject/Content/Samurai_ATTACK 1.png</File>
     <File>C:/Users/behlu/Desktop/SoftEngProject/SoftEngProject/SoftEngProject/Content/Samurai_IDLE.png</File>
     <File>C:/Users/behlu/Desktop/SoftEngProject/SoftEngProject/SoftEngProject/Content/Samurai_RUN.png</File>
+    <File>C:/Users/behlu/Desktop/SoftEngProject/SoftEngProject/SoftEngProject/Content/StartScreen.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

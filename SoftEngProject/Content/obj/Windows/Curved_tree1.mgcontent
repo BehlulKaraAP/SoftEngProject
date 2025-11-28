@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/behlu/Desktop/School/SoftwareEngineering/SoftEngProject/SoftEngProject/SoftEngProject/Content/Curved_tree1.png</SourceFile>
+  <SourceFile>C:/Users/behlu/Desktop/SoftEngProject/SoftEngProject/SoftEngProject/Content/Curved_tree1.png</SourceFile>
   <SourceTime>2025-11-18T10:58:25.7914052+01:00</SourceTime>
-  <DestFile>C:/Users/behlu/Desktop/School/SoftwareEngineering/SoftEngProject/SoftEngProject/SoftEngProject/Content/bin/Windows/Curved_tree1.xnb</DestFile>
-  <DestTime>2025-11-18T10:59:36.3638087+01:00</DestTime>
+  <DestFile>C:/Users/behlu/Desktop/SoftEngProject/SoftEngProject/SoftEngProject/Content/bin/Windows/Curved_tree1.xnb</DestFile>
+  <DestTime>2025-11-27T17:39:51.7123576+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2025-06-02T12:31:02+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

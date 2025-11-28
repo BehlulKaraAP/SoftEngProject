@@ -41,7 +41,6 @@ C:\Users\behlu\Desktop\SoftEngProject\SoftEngProject\SoftEngProject\obj\Debug\ne
 C:\Users\behlu\Desktop\SoftEngProject\SoftEngProject\SoftEngProject\obj\Debug\net8.0-windows\refint\SoftEngProject.dll
 C:\Users\behlu\Desktop\SoftEngProject\SoftEngProject\SoftEngProject\obj\Debug\net8.0-windows\SoftEngProject.pdb
 C:\Users\behlu\Desktop\SoftEngProject\SoftEngProject\SoftEngProject\bin\Debug\net8.0-windows\Content\Curved_tree1.xnb
-C:\Users\behlu\Desktop\SoftEngProject\SoftEngProject\SoftEngProject\bin\Debug\net8.0-windows\Content\New Piskel.xnb
 C:\Users\behlu\Desktop\SoftEngProject\SoftEngProject\SoftEngProject\bin\Debug\net8.0-windows\Content\Samurai_ATTACK 1.xnb
 C:\Users\behlu\Desktop\SoftEngProject\SoftEngProject\SoftEngProject\bin\Debug\net8.0-windows\Content\Samurai_IDLE.xnb
 C:\Users\behlu\Desktop\SoftEngProject\SoftEngProject\SoftEngProject\bin\Debug\net8.0-windows\Content\Samurai_RUN.xnb
@@ -63,3 +62,4 @@ C:\Users\behlu\Desktop\SoftEngProject\SoftEngProject\SoftEngProject\bin\Debug\ne
 C:\Users\behlu\Desktop\SoftEngProject\SoftEngProject\SoftEngProject\obj\Debug\net8.0-windows\SoftEngP.E82C4886.Up2Date
 C:\Users\behlu\Desktop\SoftEngProject\SoftEngProject\SoftEngProject\obj\Debug\net8.0-windows\SoftEngProject.genruntimeconfig.cache
 C:\Users\behlu\Desktop\SoftEngProject\SoftEngProject\SoftEngProject\obj\Debug\net8.0-windows\ref\SoftEngProject.dll
+C:\Users\behlu\Desktop\SoftEngProject\SoftEngProject\SoftEngProject\bin\Debug\net8.0-windows\Content\StartScreen.xnb

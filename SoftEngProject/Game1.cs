@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using SoftEngProject.Animation;
 using SoftEngProject.Input;
 using SoftEngProject.Interfaces;
+using SoftEngProject.Screens;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.ExceptionServices;
@@ -23,6 +24,8 @@ namespace SoftEngProject
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+        private StartScreen _startScreen;
+        Texture2D startScreen;
         Hero hero;
         IHeroFactory heroFactory;
         public Game1()
@@ -42,6 +45,8 @@ namespace SoftEngProject
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+            startScreen = Content.Load<Texture2D>("StartScreen");
+            _startScreen = new StartScreen(startScreen);
 
             InitializeGameObjects();
         }
@@ -56,6 +61,14 @@ namespace SoftEngProject
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            if (currentState == GameState.StartScreen)
+            {
+                if (Keyboard.GetState().IsKeyDown(Keys.Enter))
+                {
+                    currentState = GameState.Playing;
+                }
+                return;
+            }
             // TODO: Add your update logic here
 
             hero.Update(gameTime);
@@ -66,7 +79,15 @@ namespace SoftEngProject
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             _spriteBatch.Begin();
-            hero.Draw(_spriteBatch);
+
+            if (currentState == GameState.StartScreen)
+            {
+                _startScreen.Draw(_spriteBatch, GraphicsDevice);
+            }
+            else if (currentState == GameState.Playing)
+            {
+                hero.Draw(_spriteBatch);
+            }
             // TODO: Add your drawing code here
             _spriteBatch.End();
 

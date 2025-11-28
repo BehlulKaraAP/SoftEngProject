@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SoftEngProject")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6492c550520dee5bc24705c338422d87b14f9a1c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d9732031a81860a30dc8eea1a9582bc120e85199")]
 [assembly: System.Reflection.AssemblyProductAttribute("SoftEngProject")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SoftEngProject")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
