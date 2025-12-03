@@ -27,10 +27,13 @@ namespace SoftEngProject
             Texture2D idleTexture = this.content.Load<Texture2D>("Samurai_IDLE");
             Texture2D runTexture = this.content.Load<Texture2D>("Samurai_RUN");
             Texture2D attackTexture = this.content.Load<Texture2D>("Samurai_ATTACK 1");
+            Texture2D jumpTexture = this.content.Load<Texture2D>("Jump");
 
             hero.AddAnimation("Idle", CreateAnimation(idleTexture, 10, frameHeight, 0.1f));
-            hero.AddAnimation("Run", CreateAnimation(runTexture, 16, frameHeight, 0.08f));
+            hero.AddAnimation("Run", CreateAnimation(runTexture, 16, frameHeight, 0.06f));
             hero.AddAnimation("Attack", CreateAnimation(attackTexture, 7, frameHeight, 0.08f, false));
+            hero.AddAnimation("Jump", CreateAnimation(jumpTexture, 8, frameHeight, 0.08f, false));
+
 
             hero.Start();
 

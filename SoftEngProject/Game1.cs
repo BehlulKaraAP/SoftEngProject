@@ -28,6 +28,28 @@ namespace SoftEngProject
         Texture2D startScreen;
         Hero hero;
         IHeroFactory heroFactory;
+
+        Texture2D tileTexture;
+        int tileSize = 32;
+
+        int[,] map = new int[,]
+        {
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+            {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+            {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+            {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+            {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+        };
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -47,6 +69,8 @@ namespace SoftEngProject
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             startScreen = Content.Load<Texture2D>("StartScreen");
             _startScreen = new StartScreen(startScreen);
+
+            tileTexture = Content.Load<Texture2D>("Ground");
 
             InitializeGameObjects();
         }
@@ -87,6 +111,17 @@ namespace SoftEngProject
             else if (currentState == GameState.Playing)
             {
                 hero.Draw(_spriteBatch);
+                for (int y = 0; y < map.GetLength(0); y++)
+                {
+                    for (int x = 0; x < map.GetLength(1); x++)
+                    {
+                        if (map[y, x] == 1)
+                        {
+                            Vector2 position = new Vector2(x * tileSize, y * tileSize);
+                            _spriteBatch.Draw(tileTexture, position, Color.White);
+                        }
+                    }
+                }
             }
             // TODO: Add your drawing code here
             _spriteBatch.End();

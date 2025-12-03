@@ -21,11 +21,14 @@ namespace SoftEngProject
         public IInputReader InputReader { get; set; }
 
         private PlayerState currentState;
+        public PhysicsComponent Physics { get; private set; }
 
         public Hero(IInputReader reader)
         {
             InputReader = reader;
             Animator = new Animator();
+
+            Physics = new PhysicsComponent();
             Position = new Vector2(50, 50);
         }
 
@@ -46,9 +49,13 @@ namespace SoftEngProject
         
         public void Update(GameTime gameTime)
         {
+            if (currentState == null) return;
+
             currentState.Update(gameTime);
+
+            Position = Physics.Update(Position, gameTime);
+
             Animator.Update(gameTime);
-           
         }
         public void Draw(SpriteBatch spriteBatch)
         {

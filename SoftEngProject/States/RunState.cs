@@ -11,7 +11,7 @@ namespace SoftEngProject.States
 {
     internal class RunState : PlayerState
     {
-        private float speed = 100f;
+        private float speed = 4f;
         public RunState(Hero hero) : base(hero) { }
 
         public override void Enter()
@@ -28,14 +28,18 @@ namespace SoftEngProject.States
                 hero.TransitionTo(new AttackState(hero));
                 return;
             }
-
+            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
+                hero.TransitionTo(new JumpState(hero));
+                return;
+            }
             if (input.X == 0)
             {
                 hero.TransitionTo(new IdleState(hero));
                 return;
             }
 
-            hero.Position += input * speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            hero.Physics.velocity.X = input.X * speed;
 
             hero.SpriteEffect = input.X < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
         }
