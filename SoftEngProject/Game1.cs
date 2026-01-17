@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using SoftEngProject.Animation;
 using SoftEngProject.Input;
 using SoftEngProject.Interfaces;
+using SoftEngProject.Levels;
 using SoftEngProject.Screens;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -26,30 +27,13 @@ namespace SoftEngProject
 
         private StartScreen _startScreen;
         Texture2D startScreen;
+
         Hero hero;
         IHeroFactory heroFactory;
 
-        Texture2D tileTexture;
-        int tileSize = 32;
+        private Level currentLevel;
+        private readonly int tileSize = 32;
 
-        int[,] map = new int[,]
-        {
-            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-            {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-            {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-            {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-            {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-            {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-        };
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -70,14 +54,20 @@ namespace SoftEngProject
             startScreen = Content.Load<Texture2D>("StartScreen");
             _startScreen = new StartScreen(startScreen);
 
-            tileTexture = Content.Load<Texture2D>("Ground");
-
             InitializeGameObjects();
         }
         private void InitializeGameObjects()
         {
             heroFactory = new HeroFactory(Content);
             hero = heroFactory.CreateHero(new KeyBoardReader());
+        }
+
+        private void LoadLevel(Level level)
+        {
+            currentLevel = level;
+
+            hero.Position = currentLevel.HeroSpawn;
+            hero.Physics.velocity = Vector2.Zero;
         }
 
         protected override void Update(GameTime gameTime)
@@ -87,9 +77,17 @@ namespace SoftEngProject
 
             if (currentState == GameState.StartScreen)
             {
-                if (Keyboard.GetState().IsKeyDown(Keys.Enter))
+                var ks = Keyboard.GetState();
+                if (ks.IsKeyDown(Keys.D1))
                 {
+                    LoadLevel(LevelFactory.CreateLevel1(Content, tileSize));
                     currentState = GameState.Playing;
+                }
+                else if (ks.IsKeyDown(Keys.D2))
+                {
+                    LoadLevel(LevelFactory.CreateLevel2(Content, tileSize));
+                    currentState = GameState.Playing;
+
                 }
                 return;
             }
@@ -110,18 +108,8 @@ namespace SoftEngProject
             }
             else if (currentState == GameState.Playing)
             {
+                currentLevel.Draw(_spriteBatch);
                 hero.Draw(_spriteBatch);
-                for (int y = 0; y < map.GetLength(0); y++)
-                {
-                    for (int x = 0; x < map.GetLength(1); x++)
-                    {
-                        if (map[y, x] == 1)
-                        {
-                            Vector2 position = new Vector2(x * tileSize, y * tileSize);
-                            _spriteBatch.Draw(tileTexture, position, Color.White);
-                        }
-                    }
-                }
             }
             // TODO: Add your drawing code here
             _spriteBatch.End();
