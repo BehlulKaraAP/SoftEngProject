@@ -93,7 +93,7 @@ namespace SoftEngProject
             }
             // TODO: Add your update logic here
 
-            hero.Update(gameTime);
+            hero.Update(gameTime, currentLevel);
             base.Update(gameTime);
         }
         

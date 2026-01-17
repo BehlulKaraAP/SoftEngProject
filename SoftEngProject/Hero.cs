@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using SoftEngProject.Animation;
 using SoftEngProject.Input;
+using SoftEngProject.Levels;
 using SoftEngProject.States;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,11 @@ namespace SoftEngProject
 
         private PlayerState currentState;
         public PhysicsComponent Physics { get; private set; }
+
+        //Hitbox player
+        public int Width { get; } = 48;
+        public int Height { get; } = 80;
+        public Rectangle Hitbox => new Rectangle((int)Position.X, (int)Position.Y, Width, Height);
 
         public Hero(IInputReader reader)
         {
@@ -47,13 +53,13 @@ namespace SoftEngProject
             currentState.Enter();
         }
         
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, Level level)
         {
             if (currentState == null) return;
 
             currentState.Update(gameTime);
 
-            Position = Physics.Update(Position, gameTime);
+            Position = Physics.Update(Position, new Rectangle((int)Position.X, (int)Position.Y, Width, Height), level, gameTime);
 
             Animator.Update(gameTime);
         }
