@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using SharpDX.MediaFoundation;
 using SoftEngProject.Animation;
+using SoftEngProject.Input;
 
 namespace SoftEngProject.States
 {
@@ -24,7 +25,7 @@ namespace SoftEngProject.States
         public override void Update(GameTime gameTime)
         {
             var input = hero.InputReader.ReadInput();
-            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            if (hero.InputReader.JumpPressed())
             {
                 hero.TransitionTo(new JumpState(hero));
             }

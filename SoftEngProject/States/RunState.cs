@@ -28,7 +28,7 @@ namespace SoftEngProject.States
                 hero.TransitionTo(new AttackState(hero));
                 return;
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            if (hero.InputReader.JumpPressed())
             {
                 hero.TransitionTo(new JumpState(hero));
                 return;

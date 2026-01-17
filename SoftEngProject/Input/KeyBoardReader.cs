@@ -27,5 +27,9 @@ namespace SoftEngProject.Input
         {
             return Keyboard.GetState().IsKeyDown(Keys.E);
         }
+        public bool JumpPressed()
+        {
+            return Keyboard.GetState().IsKeyDown(Keys.Space);
+        }
     }
 }
