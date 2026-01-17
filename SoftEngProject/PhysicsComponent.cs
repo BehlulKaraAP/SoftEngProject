@@ -27,8 +27,6 @@ namespace SoftEngProject
 
         public Vector2 Update(Vector2 currentPosition, GameTime gameTime)
         {
-            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
-
             if (!IsGrounded)
             {
                 velocity.Y += gravity;
