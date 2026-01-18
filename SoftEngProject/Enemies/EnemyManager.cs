@@ -17,6 +17,10 @@ namespace SoftEngProject.Enemies
         public IReadOnlyList<Enemy> Enemies => enemies;
 
         public void Add(Enemy enemy) => enemies.Add(enemy);
+        public void Clear()
+        {
+            enemies.Clear();
+        }
 
         public void Update(GameTime gameTime, Level level, Hero hero)
         {

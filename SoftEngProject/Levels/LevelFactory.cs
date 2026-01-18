@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SoftEngProject.Levels
 {
-    internal static class LevelFactory
+    internal class LevelFactory
     {
         public static Level CreateLevel1(ContentManager content, int tileSize)
         {

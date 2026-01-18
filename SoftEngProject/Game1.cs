@@ -1,15 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using SoftEngProject.Animation;
 using SoftEngProject.Enemies;
 using SoftEngProject.Input;
 using SoftEngProject.Interfaces;
 using SoftEngProject.Levels;
 using SoftEngProject.Screens;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Runtime.ExceptionServices;
 
 namespace SoftEngProject
 {
@@ -35,17 +31,13 @@ namespace SoftEngProject
         Hero hero;
         IHeroFactory heroFactory;
 
-        private Level currentLevel;
         private readonly int tileSize = 32;
 
         private EnemyManager enemyManager;
-        private Texture2D meleeTexture;
 
         private Texture2D uiHeart;
 
-        private bool pendingRestart = false;
-        private float restartTimer = 0f;
-        private const float RestartDelaySeconds = 1.0f;
+        private GameSession session;
 
         public Game1()
         {
@@ -70,8 +62,8 @@ namespace SoftEngProject
             startScreen = Content.Load<Texture2D>("StartScreen");
             _startScreen = new StartScreen(startScreen);
 
-            meleeTexture = Content.Load<Texture2D>("MeleeIdle");
             enemyManager = new EnemyManager();
+            session = new GameSession(new LevelFactory(), tileSize);
 
             uiHeart = new Texture2D(GraphicsDevice, 1, 1);
             uiHeart.SetData(new[] { Color.White });
@@ -82,18 +74,6 @@ namespace SoftEngProject
         {
             heroFactory = new HeroFactory(Content);
             hero = heroFactory.CreateHero(new KeyBoardReader());
-        }
-
-        private void LoadLevel(Level level)
-        {
-            currentLevel = level;
-
-            hero.Position = currentLevel.HeroSpawn;
-            hero.Physics.velocity = Vector2.Zero;
-
-            enemyManager = new EnemyManager();
-            enemyManager.Add(new MeleeEnemy(Content, new Vector2(200, 50)));
-            enemyManager.Add(new ArcherEnemy(Content, new Vector2(250, 50)));
         }
         private void DrawLivesAsSquares()
         {
@@ -107,15 +87,6 @@ namespace SoftEngProject
                 var rect = new Rectangle(startX + i * (size + spacing), startY, size, size);
                 _spriteBatch.Draw(uiHeart, rect, Color.Red);
             }
-        }
-        private void RestartToLevel1()
-        {
-            hero.ResetHealth();
-            hero.Physics.velocity = Vector2.Zero;
-
-            LoadLevel(LevelFactory.CreateLevel1(Content, tileSize));
-
-            currentState = GameState.Playing;
         }
         private void DrawRectOutline(Rectangle rect, Color color, int thickness = 2)
         {
@@ -139,45 +110,19 @@ namespace SoftEngProject
                 var ks = Keyboard.GetState();
                 if (ks.IsKeyDown(Keys.D1))
                 {
-                    LoadLevel(LevelFactory.CreateLevel1(Content, tileSize));
+                    session.LoadLevel1(Content, hero, enemyManager);
                     currentState = GameState.Playing;
-                    
                 }
                 else if (ks.IsKeyDown(Keys.D2))
                 {
-                    LoadLevel(LevelFactory.CreateLevel2(Content, tileSize));
+                    session.LoadLevel2(Content, hero, enemyManager);
                     currentState = GameState.Playing;
-                    
-
                 }
                 return;
             }
-
             if (currentState == GameState.Playing)
             {
-                float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-                if (!pendingRestart)
-                {
-                    hero.Update(gameTime, currentLevel);
-                    enemyManager.Update(gameTime, currentLevel, hero);
-
-                    if (hero.Health <= 0)
-                    {
-                        pendingRestart = true;
-                        restartTimer = RestartDelaySeconds; 
-                    }
-                }
-                else
-                {
-                    restartTimer -= dt;
-                    if (restartTimer <= 0f)
-                    {
-                        pendingRestart = false;
-                        RestartToLevel1();
-                        return;
-                    }
-                }
+                session.Update(gameTime, Content, hero, enemyManager);
             }
             // TODO: Add your update logic here
 
@@ -195,7 +140,9 @@ namespace SoftEngProject
             }
             else if (currentState == GameState.Playing)
             {
-                currentLevel.Draw(_spriteBatch);
+                var level = session.CurrentLevel;
+
+                level.Draw(_spriteBatch);
                 enemyManager.Draw(_spriteBatch);
                 hero.Draw(_spriteBatch);
 
@@ -203,11 +150,6 @@ namespace SoftEngProject
                 if (showhitboxes)
                 {
                     DrawRectOutline(hero.Hitbox, Color.LimeGreen);
-                    foreach(var enemy in enemyManager.Enemies)
-                    {
-                        DrawRectOutline(enemy.Hitbox, Color.LimeGreen);
-                    }
-
                     foreach (var e in enemyManager.Enemies)
                     {
                         DrawRectOutline(e.Hitbox, Color.Red);
