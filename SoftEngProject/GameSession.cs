@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 using SoftEngProject.Levels;
 
 namespace SoftEngProject
@@ -17,6 +18,8 @@ namespace SoftEngProject
         private const float RestartDelaySeconds = 1.0f;
 
         public float RestartSecondsLeft => restartTimer;
+
+        private Texture2D arrowTex;
 
         public GameSession(LevelFactory levelFactory, int tileSize)
         {
@@ -41,10 +44,11 @@ namespace SoftEngProject
             hero.ResetHealth();
             hero.Position = CurrentLevel.HeroSpawn;
             hero.Physics.velocity = Vector2.Zero;
+            arrowTex = content.Load<Texture2D>("Arrow");
 
             enemyManager.Clear();
             enemyManager.Add(new Enemies.MeleeEnemy(content, new Vector2(200, 50)));
-            enemyManager.Add(new Enemies.ArcherEnemy(content, new Vector2(250, 50)));
+            enemyManager.Add(new Enemies.ArcherEnemy(content, enemyManager, arrowTex, new Vector2(250, 50)));
 
             pendingRestart = false;
             restartTimer = 0f;

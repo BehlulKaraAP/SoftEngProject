@@ -168,6 +168,8 @@ namespace SoftEngProject
                 if (showhitboxes)
                 {
                     DrawRectOutline(hero.Hitbox, Color.LimeGreen);
+                    foreach (var a in enemyManager.arrows)
+                        a.DebugDrawHitbox(_spriteBatch, debugPixel, Color.Yellow);
                     foreach (var e in enemyManager.Enemies)
                     {
                         DrawRectOutline(e.Hitbox, Color.Red);
