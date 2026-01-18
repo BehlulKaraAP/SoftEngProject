@@ -16,6 +16,8 @@ namespace SoftEngProject.Levels
         public Vector2 HeroSpawn { get; }
 
         private readonly Texture2D tileTexture;
+        public Rectangle WorldBounds =>
+             new Rectangle(0, 0, Map.GetLength(1) * TileSize, Map.GetLength(0) * TileSize);
 
         public Level(int[,] map, int tileSize, Texture2D tileTexture, Vector2 heroSpawn)
         {

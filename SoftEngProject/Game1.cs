@@ -83,7 +83,7 @@ namespace SoftEngProject
             hero.Physics.velocity = Vector2.Zero;
 
             enemyManager = new EnemyManager();
-            enemyManager.Add(new MeleeEnemy(meleeTexture, new Vector2(200, 50)));
+            enemyManager.Add(new MeleeEnemy(Content, new Vector2(200, 50)));
         }
 
         private void DrawRectOutline(Rectangle rect, Color color, int thickness = 2)
@@ -143,6 +143,10 @@ namespace SoftEngProject
                 if (showhitboxes)
                 {
                     DrawRectOutline(hero.Hitbox, Color.LimeGreen);
+                    foreach(var enemy in enemyManager.Enemies)
+                    {
+                        DrawRectOutline(enemy.Hitbox, Color.LimeGreen);
+                    }
                 }
             }
             // TODO: Add your drawing code here

@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SoftEngProject.Animation;
+using SoftEngProject.Levels;
 using System;
 using System.Linq;
 using System.Text;
@@ -10,6 +12,7 @@ namespace SoftEngProject.Enemies
     internal abstract class Enemy
     {
         public Vector2 Position { get; protected set; }
+        public float Scale { get; protected set; } = 1f;
 
         //Basic stats
         public int MaxHealth { get; protected set; } = 3;
@@ -30,7 +33,11 @@ namespace SoftEngProject.Enemies
                 Width,
                 Height);
 
+        public Animator Animator { get; } = new Animator();
+        public SpriteEffects SpriteEffect { get; protected set; } = SpriteEffects.None;
+
         protected Vector2 velocity;
+        public bool IsGrounded { get; protected set; }
 
         protected Enemy(Vector2 spawn)
         {
@@ -43,7 +50,10 @@ namespace SoftEngProject.Enemies
             if (Health < 0) Health = 0;
         }
 
-        public abstract void Update(GameTime gameTime, Levels.Level level, Hero hero);
-        public abstract void Draw(SpriteBatch spriteBatch);
+        public abstract void Update(GameTime gameTime, Level level, Hero hero);
+        public virtual void Draw(SpriteBatch spriteBatch)
+        {
+            Animator.Draw(spriteBatch, Position, SpriteEffect, Scale);
+        }
     }
 }
