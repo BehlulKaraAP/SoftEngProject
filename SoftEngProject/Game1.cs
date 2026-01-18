@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using SoftEngProject.Animation;
+using SoftEngProject.Enemies;
 using SoftEngProject.Input;
 using SoftEngProject.Interfaces;
 using SoftEngProject.Levels;
@@ -37,6 +38,9 @@ namespace SoftEngProject
         private Level currentLevel;
         private readonly int tileSize = 32;
 
+        private EnemyManager enemyManager;
+        private Texture2D meleeTexture;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -60,6 +64,9 @@ namespace SoftEngProject
             startScreen = Content.Load<Texture2D>("StartScreen");
             _startScreen = new StartScreen(startScreen);
 
+            meleeTexture = Content.Load<Texture2D>("MeleeIdle");
+            enemyManager = new EnemyManager();
+
             InitializeGameObjects();
         }
         private void InitializeGameObjects()
@@ -74,6 +81,9 @@ namespace SoftEngProject
 
             hero.Position = currentLevel.HeroSpawn;
             hero.Physics.velocity = Vector2.Zero;
+
+            enemyManager = new EnemyManager();
+            enemyManager.Add(new MeleeEnemy(meleeTexture, new Vector2(200, 50)));
         }
 
         private void DrawRectOutline(Rectangle rect, Color color, int thickness = 2)
@@ -112,6 +122,7 @@ namespace SoftEngProject
             // TODO: Add your update logic here
 
             hero.Update(gameTime, currentLevel);
+            enemyManager.Update(gameTime, currentLevel, hero);
             base.Update(gameTime);
         }
         
@@ -127,6 +138,7 @@ namespace SoftEngProject
             else if (currentState == GameState.Playing)
             {
                 currentLevel.Draw(_spriteBatch);
+                enemyManager.Draw(_spriteBatch);
                 hero.Draw(_spriteBatch);
                 if (showhitboxes)
                 {
