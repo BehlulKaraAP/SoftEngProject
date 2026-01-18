@@ -20,6 +20,9 @@ namespace SoftEngProject
     }
     public class Game1 : Game
     {
+        private Texture2D debugPixel;
+        private bool showhitboxes = true;
+
         private GameState currentState = GameState.StartScreen;
 
         private GraphicsDeviceManager _graphics;
@@ -51,6 +54,9 @@ namespace SoftEngProject
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+            debugPixel = new Texture2D(GraphicsDevice, 1, 1);
+            debugPixel.SetData(new[] { Color.White });
+
             startScreen = Content.Load<Texture2D>("StartScreen");
             _startScreen = new StartScreen(startScreen);
 
@@ -68,6 +74,18 @@ namespace SoftEngProject
 
             hero.Position = currentLevel.HeroSpawn;
             hero.Physics.velocity = Vector2.Zero;
+        }
+
+        private void DrawRectOutline(Rectangle rect, Color color, int thickness = 2)
+        {
+            // top
+            _spriteBatch.Draw(debugPixel, new Rectangle(rect.Left, rect.Top, rect.Width, thickness), color);
+            // bottom
+            _spriteBatch.Draw(debugPixel, new Rectangle(rect.Left, rect.Bottom - thickness, rect.Width, thickness), color);
+            // left
+            _spriteBatch.Draw(debugPixel, new Rectangle(rect.Left, rect.Top, thickness, rect.Height), color);
+            // right
+            _spriteBatch.Draw(debugPixel, new Rectangle(rect.Right - thickness, rect.Top, thickness, rect.Height), color);
         }
 
         protected override void Update(GameTime gameTime)
@@ -110,6 +128,10 @@ namespace SoftEngProject
             {
                 currentLevel.Draw(_spriteBatch);
                 hero.Draw(_spriteBatch);
+                if (showhitboxes)
+                {
+                    DrawRectOutline(hero.Hitbox, Color.LimeGreen);
+                }
             }
             // TODO: Add your drawing code here
             _spriteBatch.End();

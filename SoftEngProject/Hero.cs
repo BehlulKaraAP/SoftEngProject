@@ -25,10 +25,10 @@ namespace SoftEngProject
         public PhysicsComponent Physics { get; private set; }
 
         //Hitbox player
-        public int Width { get; } = 48;
-        public int Height { get; } = 80;
-        public Rectangle Hitbox => new Rectangle((int)Position.X, (int)Position.Y, Width, Height);
-
+        public int Width { get; } = 22;
+        public int Height { get; } = 46;
+        public Point HitboxOffset { get; } = new Point(60, 74);
+        public Rectangle Hitbox => new Rectangle((int)Position.X + HitboxOffset.X, (int)Position.Y + HitboxOffset.Y, Width, Height);
         public Hero(IInputReader reader)
         {
             InputReader = reader;
@@ -59,7 +59,9 @@ namespace SoftEngProject
 
             currentState.Update(gameTime);
 
-            Position = Physics.Update(Position, new Rectangle((int)Position.X, (int)Position.Y, Width, Height), level, gameTime);
+            //Position = Physics.Update(Position, new Rectangle((int)Position.X, (int)Position.Y, Width, Height), level, gameTime);
+            Position = Physics.Update(Position, Hitbox, HitboxOffset,level, gameTime);
+
 
             Animator.Update(gameTime);
         }

@@ -3,6 +3,7 @@ using SoftEngProject.Levels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,7 +27,7 @@ namespace SoftEngProject
             IsGrounded = false;
         }
 
-        public Vector2 Update(Vector2 currentPosition, Rectangle hitbox, Level level, GameTime gameTime)
+        public Vector2 Update(Vector2 currentPosition, Rectangle hitbox, Point hitboxOffset, Level level, GameTime gameTime)
         {
             //if (!IsGrounded)
             //{
@@ -58,61 +59,98 @@ namespace SoftEngProject
 
             IsGrounded = false;
 
-            Vector2 nextPosition = currentPosition;
-            //X Collision
-            nextPosition.X += velocity.X;
+            //Vector2 nextPosition = currentPosition;
+            ////X Collision
+            //nextPosition.X += velocity.X;
 
-            var xBox = new Rectangle((int)nextPosition.X, (int)currentPosition.Y, hitbox.Width, hitbox.Height);
-            ResolveCollisionsX(ref nextPosition, xBox, level);
+            //var xBox = new Rectangle((int)nextPosition.X, (int)currentPosition.Y, hitbox.Width, hitbox.Height);
+            //ResolveCollisionsX(ref nextPosition, xBox, level);
 
-            //Y Collision
-            nextPosition.Y += velocity.Y;
+            ////Y Collision
+            //nextPosition.Y += velocity.Y;
 
-            var yBox = new Rectangle((int)nextPosition.X, (int)currentPosition.Y, hitbox.Width, hitbox.Height);
-            ResolveCollisionsY(ref nextPosition, yBox, level);
+            //var yBox = new Rectangle((int)nextPosition.X, (int)currentPosition.Y, hitbox.Width, hitbox.Height);
+            //ResolveCollisionsY(ref nextPosition, yBox, level);
 
-            return nextPosition;
+            //return nextPosition;
+
+            Rectangle movedBox = hitbox;
+
+            movedBox.X += (int)velocity.X;
+            ResolveCollisionsX(ref movedBox, level);
+
+            movedBox.Y += (int)velocity.Y;
+            ResolveCollisionsY(ref movedBox, level);
+
+            return new Vector2(movedBox.X - hitboxOffset.X, movedBox.Y - hitboxOffset.Y);
         }
 
-        private void ResolveCollisionsX(ref Vector2 pos, Rectangle box, Level level)
+        private void ResolveCollisionsX(ref Rectangle box, Level level)
         {
             foreach(var tileRect in GetSolidTilesAround(box, level))
             {
-                if (box.Intersects(tileRect))
-                {
-                    if (velocity.X > 0)
-                    {
-                        pos.X = tileRect.Left - box.Width;
-                    }
-                    else if (velocity.X < 0)
-                    {
-                        pos.X = tileRect.Right - box.Width;
-                    }
+                //if (box.Intersects(tileRect))
+                //{
+                //    if (velocity.X > 0)
+                //    {
+                //        pos.X = tileRect.Left - box.Width;
+                //    }
+                //    else if (velocity.X < 0)
+                //    {
+                //        pos.X = tileRect.Right - box.Width;
+                //    }
 
-                    velocity.X = 0;
-                    box.X = (int)pos.X;
+                //    velocity.X = 0;
+                //    box.X = (int)pos.X;
+                //}
+
+                if (!box.Intersects(tileRect)) continue;
+
+                if (velocity.X > 0)
+                {
+                    box.X = tileRect.Left - box.Width;
                 }
+                else if (velocity.X < 0)
+                {
+                    box.X = tileRect.Right;
+                }
+
+                velocity.X = 0;
             }
         }
 
-        private void ResolveCollisionsY(ref Vector2 pos, Rectangle box, Level level)
+        private void ResolveCollisionsY(ref Rectangle box, Level level)
         {
             foreach (var tileRect in GetSolidTilesAround(box, level))
             {
-                if (box.Intersects(tileRect))
-                {
-                    if (velocity.Y > 0)
-                    {
-                        pos.Y = tileRect.Top - box.Height;
-                    }
-                    else if (velocity.Y < 0)
-                    {
-                        pos.X = tileRect.Bottom;
-                    }
+                //if (box.Intersects(tileRect))
+                //{
+                //    if (velocity.Y > 0)
+                //    {
+                //        pos.Y = tileRect.Top - box.Height;
+                //    }
+                //    else if (velocity.Y < 0)
+                //    {
+                //        pos.X = tileRect.Bottom;
+                //    }
 
-                    velocity.Y = 0;
-                    box.Y = (int)pos.Y;
+                //    velocity.Y = 0;
+                //    box.Y = (int)pos.Y;
+                //}
+
+                if (!box.Intersects(tileRect)) continue;
+                if (velocity.Y > 0)
+                {
+                    box.Y = tileRect.Top - box.Height;
+                    IsGrounded = true;
                 }
+                else if (velocity.Y < 0)
+                {
+                    box.Y = tileRect.Bottom;
+                }
+
+                velocity.Y = 0;
+
             }
         }
 
@@ -123,9 +161,9 @@ namespace SoftEngProject
 
            
             int leftTile = Clamp(box.Left / tileSize, 0, map.GetLength(1) - 1);
-            int rightTile = Clamp(box.Right / tileSize, 0, map.GetLength(1) - 1);
+            int rightTile = Clamp((box.Right - 1) / tileSize, 0, map.GetLength(1) - 1);
             int topTile = Clamp(box.Top / tileSize, 0, map.GetLength(0) - 1);
-            int bottomTile = Clamp(box.Bottom / tileSize, 0, map.GetLength(0) - 1);
+            int bottomTile = Clamp((box.Bottom - 1) / tileSize, 0, map.GetLength(0) - 1);
 
             for (int y = topTile; y <= bottomTile; y++)
             {
