@@ -16,8 +16,15 @@ namespace SoftEngProject.Enemies
         private readonly EnemyPhysicsComponent physics = new EnemyPhysicsComponent();
         private readonly Texture2D texture;
 
-        private float speed = 1.5f;
         private int direction = -1;
+
+        private float patrolSpeed = 1.2f;
+        private float chaseSpeed = 2.2f;
+
+        private float detectRange = 260f;
+        private float loseRange = 320f;
+
+        private bool isChasing = false;
 
         public MeleeEnemy(ContentManager content, Vector2 spawn) : base(spawn)
         {
@@ -47,21 +54,52 @@ namespace SoftEngProject.Enemies
 
         public override void Update(GameTime gameTime, Level level, Hero hero)
         {
-            physics.Velocity = physics.Velocity with { X = direction * speed };
+            float dx = hero.Position.X - Position.X;
+            float absDx = Math.Abs(dx);
+
+            if (!isChasing)
+            {
+                if (absDx <= detectRange)
+                {
+                    isChasing = true;
+                }
+            }
+            else
+            {
+                if (absDx >= loseRange)
+                {
+                    isChasing = false;
+                }
+            }
+
+            float desiredXVel;
+
+            if (isChasing)
+            {
+                direction = dx < 0 ? -1 : 1;
+                desiredXVel = direction * chaseSpeed;
+
+                Animator.Play("Run");
+            }
+            else
+            {
+                desiredXVel = direction * patrolSpeed;
+
+                Animator.Play("Run");
+            }
+
+            physics.Velocity = physics.Velocity with { X = desiredXVel };
 
             Position = physics.Update(Position, Hitbox, HitboxOffset, level, gameTime);
             IsGrounded = physics.IsGrounded;
             velocity = physics.Velocity;
 
-            SpriteEffect = direction < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-
-            if (velocity.X == 0)
+            if (!isChasing && velocity.X == 0)
+            {
                 direction *= -1;
+            }
 
-            if (Math.Abs(direction) > 0)
-                Animator.Play("Run");
-            else
-                Animator.Play("Idle");
+            SpriteEffect = direction < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
             Animator.Update(gameTime);
         }

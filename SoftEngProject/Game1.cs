@@ -84,6 +84,7 @@ namespace SoftEngProject
 
             enemyManager = new EnemyManager();
             enemyManager.Add(new MeleeEnemy(Content, new Vector2(200, 50)));
+            enemyManager.Add(new ArcherEnemy(Content, new Vector2(250, 50)));
         }
 
         private void DrawRectOutline(Rectangle rect, Color color, int thickness = 2)
