@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using SoftEngProject.Combat;
 using SoftEngProject.Levels;
 
 namespace SoftEngProject
@@ -10,6 +11,7 @@ namespace SoftEngProject
         private readonly int tileSize;
         private readonly LevelFactory levelFactory;
 
+        private readonly CombatSystem combatSystem = new CombatSystem(1);
         public Level CurrentLevel { get; private set; }
         public bool IsRestartPending => pendingRestart;
 
@@ -62,6 +64,7 @@ namespace SoftEngProject
             {
                 hero.Update(gameTime, CurrentLevel);
                 enemyManager.Update(gameTime, CurrentLevel, hero);
+                combatSystem.ApplyHeroMeleeAttack(hero, enemyManager);
 
                 if (hero.Health <= 0)
                 {

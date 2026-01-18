@@ -23,6 +23,40 @@ namespace SoftEngProject
 
         private PlayerState currentState;
         public PhysicsComponent Physics { get; private set; }
+        public bool IsAttacking { get; private set; } = false;
+        public bool AttackDamageApplied { get; private set; } = false;
+
+        private const int AttackBoxWidth = 40;
+        private const int AttackBoxHeight = 30;
+        private const int AttackBoxYOffset = 8;
+
+        public Rectangle AttackHitbox
+        {
+            get
+            {
+                bool facingLeft = SpriteEffect == SpriteEffects.FlipHorizontally;
+                int x = facingLeft ? (Hitbox.Left - AttackBoxWidth) : Hitbox.Right;
+                int y = Hitbox.Top + AttackBoxYOffset;
+                return new Rectangle(x, y, AttackBoxWidth, AttackBoxHeight);
+            }
+        }
+
+        public void BeginAttack()
+        {
+            IsAttacking = true;
+            AttackDamageApplied = false;
+        }
+
+        public void EndAttack()
+        {
+            IsAttacking = false;
+            AttackDamageApplied = false;
+        }
+
+        public void MarkAttackDamageApplied()
+        {
+            AttackDamageApplied = true;
+        }
 
         //Player stats
         public int MaxHealth { get; private set; } = 5;

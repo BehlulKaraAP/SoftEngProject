@@ -14,12 +14,16 @@ namespace SoftEngProject.States
         public override void Enter()
         {
             hero.Animator.Play("Attack");
+            hero.BeginAttack();
+
+            hero.Physics.StopHorizontal();
         }
 
         public override void Update(GameTime gameTime)
         {
             if (hero.Animator.IsAnimationComplete())
             {
+                hero.EndAttack();
                 hero.TransitionTo(new IdleState(hero));
             }
         }
