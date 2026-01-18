@@ -43,6 +43,10 @@ namespace SoftEngProject
 
         private Texture2D uiHeart;
 
+        private bool pendingRestart = false;
+        private float restartTimer = 0f;
+        private const float RestartDelaySeconds = 1.0f;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -98,13 +102,21 @@ namespace SoftEngProject
             int startX = 12;
             int startY = 12;
 
-            for (int i = 0; i < hero.health; i++)
+            for (int i = 0; i < hero.Health; i++)
             {
                 var rect = new Rectangle(startX + i * (size + spacing), startY, size, size);
                 _spriteBatch.Draw(uiHeart, rect, Color.Red);
             }
         }
+        private void RestartToLevel1()
+        {
+            hero.ResetHealth();
+            hero.Physics.velocity = Vector2.Zero;
 
+            LoadLevel(LevelFactory.CreateLevel1(Content, tileSize));
+
+            currentState = GameState.Playing;
+        }
         private void DrawRectOutline(Rectangle rect, Color color, int thickness = 2)
         {
             // top
@@ -129,19 +141,46 @@ namespace SoftEngProject
                 {
                     LoadLevel(LevelFactory.CreateLevel1(Content, tileSize));
                     currentState = GameState.Playing;
+                    
                 }
                 else if (ks.IsKeyDown(Keys.D2))
                 {
                     LoadLevel(LevelFactory.CreateLevel2(Content, tileSize));
                     currentState = GameState.Playing;
+                    
 
                 }
                 return;
             }
+
+            if (currentState == GameState.Playing)
+            {
+                float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+                if (!pendingRestart)
+                {
+                    hero.Update(gameTime, currentLevel);
+                    enemyManager.Update(gameTime, currentLevel, hero);
+
+                    if (hero.Health <= 0)
+                    {
+                        pendingRestart = true;
+                        restartTimer = RestartDelaySeconds; 
+                    }
+                }
+                else
+                {
+                    restartTimer -= dt;
+                    if (restartTimer <= 0f)
+                    {
+                        pendingRestart = false;
+                        RestartToLevel1();
+                        return;
+                    }
+                }
+            }
             // TODO: Add your update logic here
 
-            hero.Update(gameTime, currentLevel);
-            enemyManager.Update(gameTime, currentLevel, hero);
             base.Update(gameTime);
         }
         

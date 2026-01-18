@@ -26,7 +26,7 @@ namespace SoftEngProject
 
         //Player stats
         public int MaxHealth { get; private set; } = 5;
-        public int health { get; private set; } = 5;
+        public int Health { get; private set; } = 5;
 
         private float iVulTimer = 0f;
         private const float IVulDuration = 0.5f;
@@ -67,13 +67,16 @@ namespace SoftEngProject
         {
             if (IsVulnerable) return;
 
-            health -= amount;
-            if (health < 0) health = 0;
+            Health -= amount;
+            if (Health < 0) Health = 0;
 
             iVulTimer = IVulDuration;
         }
 
-
+        public void ResetHealth()
+        {
+            Health = MaxHealth;
+        }
         public void Update(GameTime gameTime, Level level)
         {
             if (currentState == null) return;
