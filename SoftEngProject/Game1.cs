@@ -41,6 +41,8 @@ namespace SoftEngProject
         private EnemyManager enemyManager;
         private Texture2D meleeTexture;
 
+        private Texture2D uiHeart;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -67,6 +69,9 @@ namespace SoftEngProject
             meleeTexture = Content.Load<Texture2D>("MeleeIdle");
             enemyManager = new EnemyManager();
 
+            uiHeart = new Texture2D(GraphicsDevice, 1, 1);
+            uiHeart.SetData(new[] { Color.White });
+
             InitializeGameObjects();
         }
         private void InitializeGameObjects()
@@ -85,6 +90,19 @@ namespace SoftEngProject
             enemyManager = new EnemyManager();
             enemyManager.Add(new MeleeEnemy(Content, new Vector2(200, 50)));
             enemyManager.Add(new ArcherEnemy(Content, new Vector2(250, 50)));
+        }
+        private void DrawLivesAsSquares()
+        {
+            int size = 16;
+            int spacing = 6;
+            int startX = 12;
+            int startY = 12;
+
+            for (int i = 0; i < hero.health; i++)
+            {
+                var rect = new Rectangle(startX + i * (size + spacing), startY, size, size);
+                _spriteBatch.Draw(uiHeart, rect, Color.Red);
+            }
         }
 
         private void DrawRectOutline(Rectangle rect, Color color, int thickness = 2)
@@ -141,6 +159,8 @@ namespace SoftEngProject
                 currentLevel.Draw(_spriteBatch);
                 enemyManager.Draw(_spriteBatch);
                 hero.Draw(_spriteBatch);
+
+                DrawLivesAsSquares();
                 if (showhitboxes)
                 {
                     DrawRectOutline(hero.Hitbox, Color.LimeGreen);

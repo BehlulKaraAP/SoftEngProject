@@ -142,7 +142,7 @@ namespace SoftEngProject.Enemies
             }
 
             //CHASE / PATROL DECISION
-            float absDx = System.Math.Abs(dxToHero);
+            float absDx = Math.Abs(dxToHero);
 
             if (!isChasing)
             {
