@@ -24,6 +24,16 @@ namespace SoftEngProject
         private PlayerState currentState;
         public PhysicsComponent Physics { get; private set; }
 
+        //Player stats
+        public int MaxHealth { get; private set; } = 5;
+        public int health { get; private set; } = 5;
+
+        private float iVulTimer = 0f;
+        private const float IVulDuration = 0.5f;
+
+        public bool IsVulnerable => iVulTimer > 0f;
+
+        
         //Hitbox player
         public int Width { get; } = 22;
         public int Height { get; } = 46;
@@ -52,7 +62,18 @@ namespace SoftEngProject
             currentState = state;
             currentState.Enter();
         }
-        
+
+        public void TakeDamage(int amount)
+        {
+            if (IsVulnerable) return;
+
+            health -= amount;
+            if (health < 0) health = 0;
+
+            iVulTimer = IVulDuration;
+        }
+
+
         public void Update(GameTime gameTime, Level level)
         {
             if (currentState == null) return;
@@ -60,6 +81,9 @@ namespace SoftEngProject
             currentState.Update(gameTime);
 
             Position = Physics.Update(Position, Hitbox, HitboxOffset,level, gameTime);
+
+            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (iVulTimer > 0f) iVulTimer -= dt;
 
 
             Animator.Update(gameTime);

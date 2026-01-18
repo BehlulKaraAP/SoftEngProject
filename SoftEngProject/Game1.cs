@@ -148,6 +148,16 @@ namespace SoftEngProject
                     {
                         DrawRectOutline(enemy.Hitbox, Color.LimeGreen);
                     }
+
+                    foreach (var e in enemyManager.Enemies)
+                    {
+                        DrawRectOutline(e.Hitbox, Color.Red);
+
+                        if (e is MeleeEnemy ms && ms.DebugIsAttackActive)
+                        {
+                            DrawRectOutline(ms.DebugAttackHitbox, Color.Orange);
+                        }
+                    }
                 }
             }
             // TODO: Add your drawing code here

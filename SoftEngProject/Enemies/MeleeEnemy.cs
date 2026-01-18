@@ -14,7 +14,11 @@ namespace SoftEngProject.Enemies
     internal class MeleeEnemy : Enemy
     {
         private readonly EnemyPhysicsComponent physics = new EnemyPhysicsComponent();
-        private readonly Texture2D texture;
+
+        public bool DebugIsAttackActive =>
+    isAttacking && attackTimer >= AttackWindup && attackTimer <= (AttackWindup + AttackActive);
+
+        public Rectangle DebugAttackHitbox => GetAttackHitbox();
 
         private int direction = -1;
 
@@ -23,8 +27,17 @@ namespace SoftEngProject.Enemies
 
         private float detectRange = 260f;
         private float loseRange = 320f;
+        private float attackRange = 60f;
 
         private bool isChasing = false;
+        private bool isAttacking = false;
+        private float attackTimer = 0f;
+        private const float AttackDuration = 0.45f; 
+        private const float AttackWindup = 0.15f;   
+        private const float AttackActive = 0.12f;  
+
+        private float attackCooldownTimer = 0f;
+        private const float AttackCooldown = 0.35f;
 
         public MeleeEnemy(ContentManager content, Vector2 spawn) : base(spawn)
         {
@@ -52,41 +65,108 @@ namespace SoftEngProject.Enemies
             ContactDamage = 1;
         }
 
+        private bool IsHeroInFrontAndClose(Hero hero)
+        {
+            int heroX = hero.Hitbox.Center.X;
+            int myX = this.Hitbox.Center.X;
+
+            int dx = heroX - myX;
+
+            bool inFront = (direction == 1 && dx > 0) || (direction == -1 && dx < 0);
+            bool close = Math.Abs(dx) <= attackRange;
+
+            return inFront && close;
+        }
+
+        private Rectangle GetAttackHitbox()
+        {
+            int w = 40;
+            int h = 30;
+
+            int x = direction == 1 ? Hitbox.Right : Hitbox.Left - w;
+            int y = Hitbox.Top + 10;
+
+            return new Rectangle(x, y, w, h);
+        }
+
         public override void Update(GameTime gameTime, Level level, Hero hero)
         {
-            float dx = hero.Position.X - Position.X;
-            float absDx = Math.Abs(dx);
+            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (attackCooldownTimer > 0f)
+                attackCooldownTimer -= dt;
+
+            float dxToHero = hero.Hitbox.Center.X - Hitbox.Center.X;
+            if (Math.Abs(dxToHero) < loseRange) 
+                direction = dxToHero < 0 ? -1 : 1;
+
+            //ATTACK STATE
+            if (isAttacking)
+            {
+                attackTimer += dt;
+
+                physics.Velocity = physics.Velocity with { X = 0 };
+
+                Position = physics.Update(Position, Hitbox, HitboxOffset, level, gameTime);
+                IsGrounded = physics.IsGrounded;
+                velocity = physics.Velocity;
+
+                SpriteEffect = direction < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+
+                Animator.Play("Attack");
+                Animator.Update(gameTime);
+
+                // damage window
+                bool active =
+                    attackTimer >= AttackWindup &&
+                    attackTimer <= (AttackWindup + AttackActive);
+
+                if (active)
+                {
+                    Rectangle atk = GetAttackHitbox();
+                    if (atk.Intersects(hero.Hitbox))
+                    {
+                        hero.TakeDamage(1);
+                    }
+                }
+
+                // end attack
+                if (attackTimer >= AttackDuration)
+                {
+                    isAttacking = false;
+                    attackTimer = 0f;
+                    attackCooldownTimer = AttackCooldown;
+                }
+
+                return;
+            }
+
+            //CHASE / PATROL DECISION
+            float absDx = System.Math.Abs(dxToHero);
 
             if (!isChasing)
             {
-                if (absDx <= detectRange)
-                {
-                    isChasing = true;
-                }
+                if (absDx <= detectRange) isChasing = true;
             }
             else
             {
-                if (absDx >= loseRange)
-                {
-                    isChasing = false;
-                }
+                if (absDx >= loseRange) isChasing = false;
             }
 
+            if (isChasing && attackCooldownTimer <= 0f && IsHeroInFrontAndClose(hero))
+            {
+                isAttacking = true;
+                attackTimer = 0f;
+                Animator.Play("Attack");
+                return;
+            }
+
+            //MOVE 
             float desiredXVel;
-
             if (isChasing)
-            {
-                direction = dx < 0 ? -1 : 1;
                 desiredXVel = direction * chaseSpeed;
-
-                Animator.Play("Run");
-            }
             else
-            {
                 desiredXVel = direction * patrolSpeed;
-
-                Animator.Play("Run");
-            }
 
             physics.Velocity = physics.Velocity with { X = desiredXVel };
 
@@ -95,12 +175,11 @@ namespace SoftEngProject.Enemies
             velocity = physics.Velocity;
 
             if (!isChasing && velocity.X == 0)
-            {
                 direction *= -1;
-            }
 
             SpriteEffect = direction < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
+            Animator.Play(Math.Abs(desiredXVel) > 0 ? "Run" : "Idle");
             Animator.Update(gameTime);
         }
 
