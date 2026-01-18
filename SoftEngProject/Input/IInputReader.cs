@@ -11,7 +11,7 @@ namespace SoftEngProject.Input
     {
         Vector2 ReadInput();
         bool AttackPressed();
-        bool JumpPressed();
+        bool JumpJustPressed();
         
     }
 }

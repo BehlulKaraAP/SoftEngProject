@@ -11,6 +11,7 @@ namespace SoftEngProject.Input
 {
     internal class KeyBoardReader : IInputReader
     {
+        private KeyboardState previous;
         public Vector2 ReadInput()
         {
             var direction = Vector2.Zero;
@@ -27,9 +28,16 @@ namespace SoftEngProject.Input
         {
             return Keyboard.GetState().IsKeyDown(Keys.E);
         }
-        public bool JumpPressed()
+        public bool JumpJustPressed()
         {
-            return Keyboard.GetState().IsKeyDown(Keys.Space);
+            var state = Keyboard.GetState();
+
+            bool downNow = state.IsKeyDown(Keys.Space) || state.IsKeyDown(Keys.Up);
+            bool downBefore = previous.IsKeyDown(Keys.Space) || previous.IsKeyDown(Keys.Up);
+
+            previous = state;
+
+            return downNow && !downBefore;
         }
     }
 }

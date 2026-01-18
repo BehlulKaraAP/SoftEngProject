@@ -28,7 +28,7 @@ namespace SoftEngProject.States
                 hero.TransitionTo(new AttackState(hero));
                 return;
             }
-            if (hero.InputReader.JumpPressed())
+            if (hero.InputReader.JumpJustPressed())
             {
                 hero.TransitionTo(new JumpState(hero));
                 return;

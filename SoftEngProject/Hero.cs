@@ -59,7 +59,6 @@ namespace SoftEngProject
 
             currentState.Update(gameTime);
 
-            //Position = Physics.Update(Position, new Rectangle((int)Position.X, (int)Position.Y, Width, Height), level, gameTime);
             Position = Physics.Update(Position, Hitbox, HitboxOffset,level, gameTime);
 
 

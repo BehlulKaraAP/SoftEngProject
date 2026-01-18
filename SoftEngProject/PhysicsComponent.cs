@@ -14,8 +14,8 @@ namespace SoftEngProject
         private const float gravity = 0.5f;
         private const float maxFallSpeed = 15f;
         private const float jumpForce = -12f;
-        //private const float friction = 0.8f;
-        //private const float groundLevel =200f;
+        private float coyoteTimer = 0f;
+        private const float coyoteTime = 0.1f;
 
         public Vector2 velocity;
 
@@ -29,26 +29,9 @@ namespace SoftEngProject
 
         public Vector2 Update(Vector2 currentPosition, Rectangle hitbox, Point hitboxOffset, Level level, GameTime gameTime)
         {
-            //if (!IsGrounded)
-            //{
-            //    velocity.Y += gravity;
-            //    if (velocity.Y > maxFallSpeed) velocity.Y = maxFallSpeed;
-            //}
-
-            //Vector2 nextPosition = currentPosition + velocity;
-
-            //if (nextPosition.Y >= groundLevel)
-            //{
-            //    nextPosition.Y = groundLevel;
-            //    velocity.Y = 0;
-            //    IsGrounded = true;
-            //}
-            //else
-            //{
-            //    IsGrounded = false;
-            //}
-
             //return nextPosition;
+            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            coyoteTimer = IsGrounded ? coyoteTime : MathHelper.Max(0f, coyoteTimer - dt);
 
             //Gravity
             if (!IsGrounded)
@@ -58,21 +41,6 @@ namespace SoftEngProject
             }
 
             IsGrounded = false;
-
-            //Vector2 nextPosition = currentPosition;
-            ////X Collision
-            //nextPosition.X += velocity.X;
-
-            //var xBox = new Rectangle((int)nextPosition.X, (int)currentPosition.Y, hitbox.Width, hitbox.Height);
-            //ResolveCollisionsX(ref nextPosition, xBox, level);
-
-            ////Y Collision
-            //nextPosition.Y += velocity.Y;
-
-            //var yBox = new Rectangle((int)nextPosition.X, (int)currentPosition.Y, hitbox.Width, hitbox.Height);
-            //ResolveCollisionsY(ref nextPosition, yBox, level);
-
-            //return nextPosition;
 
             Rectangle movedBox = hitbox;
 
@@ -89,21 +57,6 @@ namespace SoftEngProject
         {
             foreach(var tileRect in GetSolidTilesAround(box, level))
             {
-                //if (box.Intersects(tileRect))
-                //{
-                //    if (velocity.X > 0)
-                //    {
-                //        pos.X = tileRect.Left - box.Width;
-                //    }
-                //    else if (velocity.X < 0)
-                //    {
-                //        pos.X = tileRect.Right - box.Width;
-                //    }
-
-                //    velocity.X = 0;
-                //    box.X = (int)pos.X;
-                //}
-
                 if (!box.Intersects(tileRect)) continue;
 
                 if (velocity.X > 0)
@@ -123,21 +76,6 @@ namespace SoftEngProject
         {
             foreach (var tileRect in GetSolidTilesAround(box, level))
             {
-                //if (box.Intersects(tileRect))
-                //{
-                //    if (velocity.Y > 0)
-                //    {
-                //        pos.Y = tileRect.Top - box.Height;
-                //    }
-                //    else if (velocity.Y < 0)
-                //    {
-                //        pos.X = tileRect.Bottom;
-                //    }
-
-                //    velocity.Y = 0;
-                //    box.Y = (int)pos.Y;
-                //}
-
                 if (!box.Intersects(tileRect)) continue;
                 if (velocity.Y > 0)
                 {
@@ -186,10 +124,11 @@ namespace SoftEngProject
 
         public void Jump()
         {
-            if (IsGrounded)
+            if (coyoteTimer > 0f)
             {
                 velocity.Y = jumpForce;
                 IsGrounded = false;
+                coyoteTimer = 0f;
             }
         }
 

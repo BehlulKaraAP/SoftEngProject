@@ -25,7 +25,7 @@ namespace SoftEngProject.States
         public override void Update(GameTime gameTime)
         {
             var input = hero.InputReader.ReadInput();
-            if (hero.InputReader.JumpPressed())
+            if (hero.InputReader.JumpJustPressed())
             {
                 hero.TransitionTo(new JumpState(hero));
             }
