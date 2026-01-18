@@ -28,6 +28,9 @@ namespace SoftEngProject
         private StartScreen _startScreen;
         Texture2D startScreen;
 
+        private GameOverScreen _gameOverScreen;
+        Texture2D gameOverScreen;
+
         Hero hero;
         IHeroFactory heroFactory;
 
@@ -61,6 +64,8 @@ namespace SoftEngProject
 
             startScreen = Content.Load<Texture2D>("StartScreen");
             _startScreen = new StartScreen(startScreen);
+            gameOverScreen = Content.Load<Texture2D>("GameOver");
+            _gameOverScreen = new GameOverScreen(gameOverScreen);
 
             enemyManager = new EnemyManager();
             session = new GameSession(new LevelFactory(), tileSize);
@@ -123,10 +128,23 @@ namespace SoftEngProject
             if (currentState == GameState.Playing)
             {
                 session.Update(gameTime, Content, hero, enemyManager);
+                if (session.IsRestartPending)
+                {
+                    currentState = GameState.GameOver;
+                }
             }
-            // TODO: Add your update logic here
+            else if (currentState == GameState.GameOver)
+            {
+                session.Update(gameTime, Content, hero, enemyManager);
 
-            base.Update(gameTime);
+                if (!session.IsRestartPending)
+                {
+                    currentState = GameState.Playing;
+                }
+            }
+                // TODO: Add your update logic here
+
+                base.Update(gameTime);
         }
         
         protected override void Draw(GameTime gameTime)
@@ -161,8 +179,18 @@ namespace SoftEngProject
                     }
                 }
             }
-            // TODO: Add your drawing code here
-            _spriteBatch.End();
+            else if (currentState == GameState.GameOver)
+            {
+                var level = session.CurrentLevel;
+
+                level.Draw(_spriteBatch);
+                enemyManager.Draw(_spriteBatch);
+                hero.Draw(_spriteBatch);
+
+                _gameOverScreen.Draw(_spriteBatch, GraphicsDevice);
+            }
+                // TODO: Add your drawing code here
+                _spriteBatch.End();
 
             base.Draw(gameTime);
         }
