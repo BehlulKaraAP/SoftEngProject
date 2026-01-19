@@ -18,7 +18,6 @@ namespace SoftEngProject
     public class Game1 : Game
     {
         private Texture2D debugPixel;
-        private bool showhitboxes = true;
 
         private GameState currentState = GameState.StartScreen;
 
@@ -41,6 +40,10 @@ namespace SoftEngProject
         private Texture2D uiHeart;
 
         private GameSession session;
+
+        private Texture2D background1;
+        private Texture2D background2;
+
 
         public Game1()
         {
@@ -73,6 +76,9 @@ namespace SoftEngProject
             uiHeart = new Texture2D(GraphicsDevice, 1, 1);
             uiHeart.SetData(new[] { Color.White });
 
+            background1 = Content.Load<Texture2D>("Background1");
+            background2 = Content.Load<Texture2D>("Background2");
+
             InitializeGameObjects();
         }
         private void InitializeGameObjects()
@@ -93,18 +99,7 @@ namespace SoftEngProject
                 _spriteBatch.Draw(uiHeart, rect, Color.Red);
             }
         }
-        private void DrawRectOutline(Rectangle rect, Color color, int thickness = 2)
-        {
-            // top
-            _spriteBatch.Draw(debugPixel, new Rectangle(rect.Left, rect.Top, rect.Width, thickness), color);
-            // bottom
-            _spriteBatch.Draw(debugPixel, new Rectangle(rect.Left, rect.Bottom - thickness, rect.Width, thickness), color);
-            // left
-            _spriteBatch.Draw(debugPixel, new Rectangle(rect.Left, rect.Top, thickness, rect.Height), color);
-            // right
-            _spriteBatch.Draw(debugPixel, new Rectangle(rect.Right - thickness, rect.Top, thickness, rect.Height), color);
-        }
-
+        
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
@@ -158,6 +153,9 @@ namespace SoftEngProject
             }
             else if (currentState == GameState.Playing)
             {
+                Texture2D bg = session.CurrentLevelIndex == 2 ? background2 : background1;
+                _spriteBatch.Draw(bg, GraphicsDevice.Viewport.Bounds, Color.White);
+
                 var level = session.CurrentLevel;
 
                 level.Draw(_spriteBatch);
@@ -165,21 +163,6 @@ namespace SoftEngProject
                 hero.Draw(_spriteBatch);
 
                 DrawLivesAsSquares();
-                if (showhitboxes)
-                {
-                    DrawRectOutline(hero.Hitbox, Color.LimeGreen);
-                    foreach (var a in enemyManager.arrows)
-                        a.DebugDrawHitbox(_spriteBatch, debugPixel, Color.Yellow);
-                    foreach (var e in enemyManager.Enemies)
-                    {
-                        DrawRectOutline(e.Hitbox, Color.Red);
-
-                        if (e is MeleeEnemy ms && ms.DebugIsAttackActive)
-                        {
-                            DrawRectOutline(ms.DebugAttackHitbox, Color.Orange);
-                        }
-                    }
-                }
             }
             else if (currentState == GameState.GameOver)
             {

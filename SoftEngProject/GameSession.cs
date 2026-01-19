@@ -10,6 +10,8 @@ namespace SoftEngProject
     {
         private readonly int tileSize;
         private readonly LevelFactory levelFactory;
+        private int currentLevelIndex = 0;
+        public int CurrentLevelIndex => currentLevelIndex;
 
         private readonly CombatSystem combatSystem = new CombatSystem(1);
         public Level CurrentLevel { get; private set; }
@@ -31,14 +33,18 @@ namespace SoftEngProject
 
         public void LoadLevel1(ContentManager content, Hero hero, Enemies.EnemyManager enemyManager)
         {
+            currentLevelIndex = 1;
             CurrentLevel = LevelFactory.CreateLevel1(content, tileSize);
             ResetWorld(hero, enemyManager, content);
+            SpawnEnemiesForCurrentLevel(content, enemyManager);
         }
 
         public void LoadLevel2(ContentManager content, Hero hero, Enemies.EnemyManager enemyManager)
         {
+            currentLevelIndex = 2;
             CurrentLevel = LevelFactory.CreateLevel2(content, tileSize);
             ResetWorld(hero, enemyManager, content);
+            SpawnEnemiesForCurrentLevel(content, enemyManager);
         }
 
         private void ResetWorld(Hero hero, Enemies.EnemyManager enemyManager, ContentManager content)
@@ -49,11 +55,25 @@ namespace SoftEngProject
             arrowTex = content.Load<Texture2D>("Arrow");
 
             enemyManager.Clear();
-            enemyManager.Add(new Enemies.MeleeEnemy(content, new Vector2(200, 50)));
-            enemyManager.Add(new Enemies.ArcherEnemy(content, enemyManager, arrowTex, new Vector2(250, 50)));
 
             pendingRestart = false;
             restartTimer = 0f;
+        }
+        private void SpawnEnemiesForCurrentLevel(ContentManager content, Enemies.EnemyManager enemyManager)
+        {
+            if (currentLevelIndex == 1)
+            {
+                enemyManager.Add(new Enemies.MeleeEnemy(content, new Vector2(200, 50)));
+                return;
+            }
+
+            if (currentLevelIndex == 2)
+            {
+                var arrowTex = content.Load<Texture2D>("Arrow");
+                enemyManager.Add(new Enemies.MeleeEnemy(content, new Vector2(200, 50)));
+                enemyManager.Add(new Enemies.ArcherEnemy(content, enemyManager, arrowTex, new Vector2(350, 50)));
+                return;
+            }
         }
 
         public void Update(GameTime gameTime, ContentManager content, Hero hero, Enemies.EnemyManager enemyManager)
@@ -65,6 +85,12 @@ namespace SoftEngProject
                 hero.Update(gameTime, CurrentLevel);
                 enemyManager.Update(gameTime, CurrentLevel, hero);
                 combatSystem.ApplyHeroMeleeAttack(hero, enemyManager);
+
+                if (currentLevelIndex == 1 && enemyManager.Enemies.Count == 0)
+                {
+                    LoadLevel2(content, hero, enemyManager);
+                    return;
+                }
 
                 if (hero.Health <= 0)
                 {

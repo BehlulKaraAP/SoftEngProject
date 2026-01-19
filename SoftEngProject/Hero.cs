@@ -41,32 +41,14 @@ namespace SoftEngProject
             }
         }
 
-        public void BeginAttack()
-        {
-            IsAttacking = true;
-            AttackDamageApplied = false;
-        }
-
-        public void EndAttack()
-        {
-            IsAttacking = false;
-            AttackDamageApplied = false;
-        }
-
-        public void MarkAttackDamageApplied()
-        {
-            AttackDamageApplied = true;
-        }
-
         //Player stats
-        public int MaxHealth { get; private set; } = 5;
-        public int Health { get; private set; } = 5;
+        public int MaxHealth { get; private set; } = 10;
+        public int Health { get; private set; } = 10;
 
         private float iVulTimer = 0f;
         private const float IVulDuration = 0.5f;
 
         public bool IsVulnerable => iVulTimer > 0f;
-
         
         //Hitbox player
         public int Width { get; } = 22;
@@ -81,7 +63,6 @@ namespace SoftEngProject
             Physics = new PhysicsComponent();
             Position = new Vector2(50, 50);
         }
-
         public void Start()
         {
             TransitionTo(new IdleState(this));
@@ -90,7 +71,6 @@ namespace SoftEngProject
         {
             Animator.AddAnimation(name, animation);
         }
-
         public void TransitionTo(PlayerState state)
         {
             currentState = state;
@@ -110,6 +90,23 @@ namespace SoftEngProject
         public void ResetHealth()
         {
             Health = MaxHealth;
+        }
+
+        public void BeginAttack()
+        {
+            IsAttacking = true;
+            AttackDamageApplied = false;
+        }
+
+        public void EndAttack()
+        {
+            IsAttacking = false;
+            AttackDamageApplied = false;
+        }
+
+        public void MarkAttackDamageApplied()
+        {
+            AttackDamageApplied = true;
         }
         public void Update(GameTime gameTime, Level level)
         {
