@@ -70,8 +70,8 @@ namespace SoftEngProject
             if (currentLevelIndex == 2)
             {
                 var arrowTex = content.Load<Texture2D>("Arrow");
-                enemyManager.Add(new Enemies.MeleeEnemy(content, new Vector2(200, 50)));
-                enemyManager.Add(new Enemies.ArcherEnemy(content, enemyManager, arrowTex, new Vector2(350, 50)));
+                enemyManager.Add(new Enemies.MeleeEnemy(content, new Vector2(200, 200)));
+                enemyManager.Add(new Enemies.ArcherEnemy(content, enemyManager, arrowTex, new Vector2(350, 200)));
                 return;
             }
         }

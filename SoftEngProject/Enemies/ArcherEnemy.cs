@@ -24,6 +24,8 @@ namespace SoftEngProject.Enemies
         private float shootCooldown = 1.2f;
         private float shootTimer = 0f;
 
+        private bool isShooting = false;
+
         private float arrowSpeed = 300f;
         private float speed = 1.2f;
 
@@ -46,7 +48,7 @@ namespace SoftEngProject.Enemies
 
             Animator.AddAnimation("Idle", new SpriteAnimation(idleTex, idleFrames, frameSpeed: 0.12f, isLooping: true));
             Animator.AddAnimation("Walk", new SpriteAnimation(walkTex, walkFrames, frameSpeed: 0.10f, isLooping: true));
-            Animator.AddAnimation("Shot", new SpriteAnimation(shotTex, shotFrames, frameSpeed: 0.06f, isLooping: false));
+            Animator.AddAnimation("Shot", new SpriteAnimation(shotTex, shotFrames, frameSpeed: 0.1f, isLooping: false));
 
             Animator.Play("Idle");
 
@@ -79,8 +81,22 @@ namespace SoftEngProject.Enemies
 
                 SpriteEffect = direction < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
+                if (isShooting)
+                {
+                    Animator.Play("Shot");
+
+                    if (Animator.IsAnimationComplete())
+                    {
+                        isShooting = false;
+                    }
+
+                    Animator.Update(gameTime);
+                    return;
+                }
+
                 if (shootTimer <= 0f)
                 {
+                    isShooting = true;
                     Animator.Play("Shot");
 
                     Vector2 spawnPos = new Vector2(
@@ -92,10 +108,6 @@ namespace SoftEngProject.Enemies
 
                     enemyManager.AddArrow(new ArrowProjectile(arrowTexture, spawnPos, vel));
                     shootTimer = shootCooldown;
-                }
-                else
-                {
-                    Animator.Play("Idle");
                 }
 
                 Animator.Update(gameTime);
